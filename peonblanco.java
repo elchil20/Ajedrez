@@ -1,7 +1,7 @@
 import java.util.Scanner;
-public class peon {
+public class peonblanco {
     public static void main(String[] args) {
-        //Algoritmo movimiento de la torre
+        //Algoritmo movimiento del peonblanco
         String[][] tablero = {
                 {" ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
                 {" ", "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1", " "},
@@ -13,34 +13,33 @@ public class peon {
                 {" ", "a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7", " "},
                 {" ", "a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8", " "},
         };
-            for (int i = 1; i < tablero.length; i++) {
-                String[] filas = tablero[i];
-                System.out.println(" ");
-                for (int j = 1; j < filas.length - 1; j++) {
-                    System.out.print(i + "," + j + ": " + tablero[i][j] + " ");
-                }
+        for (int i = 1; i < tablero.length; i++) {
+            System.out.println(" ");
+            for (int j = 1; j < tablero.length; j++) {
+                System.out.print(i + "," + j + ": " + tablero[i][j] + " ");
             }
+        }
         System.out.println('\n');
-            int columna;
-            int fila;
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Dime la fila:");
-            fila = sc.nextInt();
-            System.out.println("Dime una columna: ");
-            columna = sc.nextInt();
-            if (fila == 1 || fila == 8) {
-                System.out.println("El peon no puede estar en la primera fila o en la ultima");
-            }
-            else if (fila >1 && fila < 6){
-                System.out.println("Tu posicion actual es: " + tablero[fila][columna]);
-                System.out.print("El peon blanco puede moverse a: ");
-                System.out.print(tablero[fila+1][columna] + " ");
-                System.out.print(tablero[fila+2][columna] + " ");
-            }
-            else {
-                System.out.println("Tu posicion actual es: " + tablero[fila][columna]);
-                System.out.print("El peon blanco puede moverse a: ");
-                System.out.print(tablero[fila+1][columna] + " ");
-            }
-            }
+        int columna;
+        int fila;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Dime la fila:");
+        fila = sc.nextInt();
+        System.out.println("Dime una columna: ");
+        columna = sc.nextInt();
+        if (fila == 1 || fila == 8) {
+            System.out.println("El peon no puede estar en la primera fila o en la ultima");
+        }
+        else if (fila >1 && fila < 6){
+            System.out.println("Tu posicion actual es: " + tablero[fila][columna]);
+            System.out.print("El peon blanco puede moverse a: ");
+            System.out.print(tablero[fila+1][columna] + " ");
+            System.out.print(tablero[fila+2][columna] + " ");
+        }
+        else {
+            System.out.println("Tu posicion actual es: " + tablero[fila][columna]);
+            System.out.print("El peon blanco puede moverse a: ");
+            System.out.print(tablero[fila+1][columna] + " ");
+        }
     }
+}

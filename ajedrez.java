@@ -96,6 +96,8 @@ public class ajedrez {
     public static String respuesta;
     public static String planilla;
 
+    private static int fila_copy;
+
     // --------------------------------------------------- //
 
     // --> MÉTODO DE ASIGNACIÓN DE TABLERO - PARTE BLANCA
@@ -117,11 +119,13 @@ public class ajedrez {
         System.out.println("Elige que pieza quieres usar: P=Peon, C=Caballo, A=Alfil, T=Torre, D=Dama, R=Rey ");
         Scanner piezas = new Scanner(System.in);
         pieza = piezas.nextLine();
+
         if (pieza.matches("[Pp]")) {
             System.out.println("Has elegido el Peon.");
             peonblanco();
         } else if (pieza.matches("[Cc]")) {
             System.out.println("Has elegido el Caballo.");
+            caballo();
         } else if (pieza.matches("[Aa]")) {
             System.out.println("Has elegido el Alfil.");
             alfil();
@@ -153,6 +157,7 @@ public class ajedrez {
                 fila = peon.nextInt();
                 letras();
                 planilla = inicial + tablero[fila][columna];
+
                 if (fila <= 1 || fila >= 8) {
                     System.out.println("Error el peon no puede estar en esa posicion.");
                 } else {
@@ -204,11 +209,13 @@ public class ajedrez {
         System.out.println("Elige que pieza quieres usar: P=Peon, C=Caballo, A=Alfil, T=Torre, D=Dama, R=Rey ");
         Scanner piezas = new Scanner(System.in);
         pieza = piezas.nextLine();
+
         if (pieza.matches("[Pp]")) {
             System.out.println("Has elegido el Peon.");
             peonnegro();
         } else if (pieza.matches("[Cc]")) {
             System.out.println("Has elegido el Caballo.");
+            caballo();
         } else if (pieza.matches("[Aa]")) {
             System.out.println("Has elegido el Alfil.");
             alfil();
@@ -240,6 +247,7 @@ public class ajedrez {
                 fila = peon.nextInt();
                 letras();
                 planilla = inicial + tablero[fila][columna];
+
                 if (fila <= 1 || fila >= 8 || columna < 1 || columna > 8) {
                     System.out.println("Error el peon no puede estar en esa posicion.");
                 } else if (fila < 6) {
@@ -281,6 +289,7 @@ public class ajedrez {
                 fila = torre.nextInt();
                 letras();
                 planilla = inicial + tablero[fila][columna];
+
                 if (fila == 0 || columna == 0 || fila > 8 || columna > 8) {
                     System.out.println("Error el formato debe de ser de a-h y 1-8");
                 } else {
@@ -326,6 +335,7 @@ public class ajedrez {
                 fila = alfil.nextInt();
                 letras();
                 planilla = inicial + tablero[fila][columna];
+
                 if (fila == 0 || columna == 0 || fila > 8 || columna > 8) {
                     System.out.println("Error el formato debe de ser de a-h y 1-8");
                 }
@@ -359,10 +369,121 @@ public class ajedrez {
     // --> MÉTODO DE MOVIMIENTOS DE CABALLO
 
     public static void caballo() {
+        char inicial = 'C';
+        do {
+            Scanner caballo = new Scanner(System.in);
+            try {
+                System.out.println("Ahora dime su posicion inicial.");
+                System.out.println("Dime una letra: ");
+                letra = caballo.nextLine();
+                System.out.println("Dime un numero: ");
+                fila = caballo.nextInt();
+                fila_copy = fila;
+                letras();
+                planilla = inicial + tablero[fila][columna];
+
+                if (fila == 0 || columna == 0 || fila > 8 || columna > 8) {
+                    System.out.println("Error el formato debe de ser de a-h y 1-8");
+                } else {
+                    System.out.println("Tu posicion actual es: " + tablero[fila][columna]);
+                    System.out.println("El caballo puede puede moverse a: ");
+
+                    // ----- MOVIMIENTO 1 ---- // (x=x+1; y=y+2)
+                    try {
+                        fila += 2;
+                        columna += 1;
+                        System.out.print(tablero[fila][columna] + " ");
+                    } catch (Exception error) {
+                        System.out.println("");
+                    }
+
+                    // ----- MOVIMIENTO 2 ---- // (x=x+2; y=y+1)
+                    try {
+                        fila = fila_copy;
+                        fila += 1;
+                        columna += 1; // Las columnas con cada movimiento tendrán un desfase de -1 on respecto a su anterior valor del try catch
+                        System.out.print(tablero[fila][columna] + " ");
+                    } catch (Exception error) {
+                        System.out.println("");
+                    }
+
+                    // ----- MOVIMIENTO 3 ---- // (x=x+2; y=y-1)
+                    try {
+                        fila = fila_copy;
+                        fila -= 1;
+                        columna += 0; // Las columnas con cada movimiento tendrán un desfase de -1 on respecto a su anterior valor del try catch
+                        System.out.print(tablero[fila][columna] + " ");
+                    } catch (Exception error) {
+                        System.out.println("");
+                    }
+
+                    // ----- MOVIMIENTO 4 ---- // (x=x+1; y=y-2)
+                    try {
+                        fila = fila_copy;
+                        fila -= 2;
+                        columna += -1; // Las columnas con cada movimiento tendrán un desfase de -1 on respecto a su anterior valor del try catch
+                        System.out.print(tablero[fila][columna] + " ");
+                    } catch (Exception error) {
+                        System.out.println("");
+                    }
+
+                    // ----- MOVIMIENTO 5 ---- // (x=x-1; y=y-2)
+                    try {
+                        fila = fila_copy;
+                        fila -= 2;
+                        columna += -2; // Las columnas con cada movimiento tendrán un desfase de -1 on respecto a su anterior valor del try catch
+                        System.out.print(tablero[fila][columna] + " ");
+                    } catch (Exception error) {
+                        System.out.println("");
+                    }
+
+                    // ----- MOVIMIENTO 6 ---- // (x=x-2; y=y-1)
+                    try {
+                        fila = fila_copy;
+                        fila -= 1;
+                        columna += -1; // Las columnas con cada movimiento tendrán un desfase de +1 con respecto a su anterior valor del try catch
+                        System.out.print(tablero[fila][columna] + " ");
+                    } catch (Exception error) {
+                        System.out.println("");
+                    }
+
+                    // ----- MOVIMIENTO 7 ---- // (x=x-2; y=y+1)
+                    try {
+                        fila = fila_copy;
+                        fila += 1;
+                        columna += 0; // Las columnas con cada movimiento tendrán un desfase de +1 on respecto a su anterior valor del try catch
+                        System.out.print(tablero[fila][columna] + " ");
+                    } catch (Exception error) {
+                        System.out.println("");
+                    }
+
+                    // ----- MOVIMIENTO 8 ---- // (x=x-1; y=y+2)
+                    try {
+                        fila = fila_copy;
+                        fila += 2;
+                        columna += 1; // Las columnas con cada movimiento tendrán un desfase de +1 on respecto a su anterior valor del try catch
+                        System.out.print(tablero[fila][columna] + " ");
+                    } catch (Exception error) {
+                        System.out.println("");
+                    }
+
+                    System.out.print('\n');
+                    System.out.println("Tu planilla actual es: " + planilla);
+                }
+            } catch (Exception g) {
+                System.out.println("Error el caballo no puede estar en esa posicion.");
+            }
+            System.out.print("¿Quieres volver a mover el caballo? si/no: ");
+            respuesta = caballo.next();
+        }
+        while (respuesta.matches("si")) ;
+        if (respuesta.matches("no")) {
+            ajedrez.main(null);
+        }
 
     }
 
-    // --> MÉTODO DE MOVIMIENTOS DE REY
+    // --> MÉTODO DE MOVIMIENTOS DEL REY
 
     public static void rey() {
         char inicial = 'R';
@@ -376,6 +497,7 @@ public class ajedrez {
                 fila = rey.nextInt();
                 letras();
                 planilla = inicial + tablero[fila][columna];
+
                 if (fila == 0 || columna == 0 || fila > 8 || columna > 8) {
                     System.out.println("Error el formato debe de ser de a-h y 1-8");
                 } else {
@@ -426,6 +548,7 @@ public class ajedrez {
                 fila = dama.nextInt();
                 letras();
                 planilla = inicial + tablero[fila][columna];
+
                 if (fila == 0 || columna == 0 || fila > 8 || columna > 8) {
                     System.out.println("Error el formato debe de ser de a-h y 1-8");
                 } else {

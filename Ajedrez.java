@@ -216,7 +216,7 @@ public class Ajedrez {
                 planilla = inicial + tablero[fila][columna];
                 if (fila <= 1 || fila >= 8 || columna < 1 || columna > 8) {
                     System.out.println("Error el peon no puede estar en esa posicion.");
-                } else if (fila < 6) {
+                } else if (fila == 2) {
                     System.out.println("Tu posicion actual es: " + tablero[fila][columna]);
                     System.out.print("El peon puede moverse a: ");
                     System.out.print(tablero[fila - 1][columna] + " ");

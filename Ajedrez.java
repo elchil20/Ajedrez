@@ -315,7 +315,7 @@ public class Ajedrez {
     // --> MÉTODO DE MOVIMIENTOS DE ALFIL
 
     public static void alfil() {
-        //Algoritmo de la torre.//
+        //Algoritmo del Alfil.//
 
         char inicial = 'A'; //Inicial que tendrá el Alfil para la planilla.//
         Scanner alfil = new Scanner(System.in);
@@ -331,21 +331,21 @@ public class Ajedrez {
                     System.out.print("El alfil puede moverse a: ");
                     try {
                         for (int i = fila + 1; i < tablero.length; i++) { //Recorremos el tablero y le hacemos fila + 1//
-                            //System.out.print(tablero[i][(columna + i) - fila] + " "); //Con este algoritmo la fila y la columna siempre van a ser +1 cada una.//
+                            System.out.print(tablero[i][(columna + i) - fila] + " "); //Con este algoritmo la fila y la columna siempre van a ser +1 cada una.//
                         }
                     } catch (Exception error2) {
                         System.out.print("");
                     }
                     try {
                         for (int i = columna - 1; i >= 1; i--) { //Hacemos columna - 1 hasta que la columna sea 1//
-                            //System.out.print(tablero[(columna - i) + fila][(i)] + " "); //Con este algoritmo la fila y la columna siempre van a ser -1 cada una.//
+                            System.out.print(tablero[(columna - i) + fila][(i)] + " "); //Con este algoritmo la fila y la columna siempre van a ser -1 cada una.//
                         }
                     } catch (Exception error2) {
                         System.out.print("");
                     }
                     try {
                         for (int i = fila - 1; i >= 1; i--) { //Hacemos fila - 1 hasta que la fila sea 1//
-                            //System.out.print(tablero[i][(columna - i) + fila] + " "); //Con este algoritmo hacemos columna + 1 y fila - 1.//
+                            System.out.print(tablero[i][(columna - i) + fila] + " "); //Con este algoritmo hacemos columna + 1 y fila - 1.//
                         }
                     } catch (Exception error2) {
                         System.out.print("");

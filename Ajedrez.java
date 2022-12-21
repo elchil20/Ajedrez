@@ -514,10 +514,15 @@ public class Ajedrez {
                 } else {
                     System.out.println("Tu posicion actual es: " + tablero[fila][columna]);
                     System.out.println("El rey puede puede moverse a: ");
-                    System.out.print(tablero[fila+1][columna] + " "); //Algoritmo rey hacia arriba fila + 1.//
-                    System.out.print(tablero[fila-1][columna] + " "); //Algoritmo rey hacia abajo fila + 1.//
-                    System.out.print(tablero[fila][columna+1] + " "); //Algoritmo rey hacia la derecha columna + 1.//
-                    System.out.print(tablero[fila][columna-1] + " "); //Algoritmo rey hacia la Izquierda columna + 1.//
+                    System.out.print(tablero[fila+1][columna] + " ");
+                    System.out.print(tablero[fila-1][columna] + " ");
+                    System.out.print(tablero[fila][columna+1] + " ");
+                    System.out.print(tablero[fila][columna-1] + " ");
+                    System.out.print(tablero[fila+1][columna+1] + " ");
+                    System.out.print(tablero[fila-1][columna-1] + " ");
+                    System.out.print(tablero[fila+1][columna-1] + " ");
+                    System.out.print(tablero[fila-1][columna+1] + " ");
+
                     System.out.print('\n');
                     System.out.println("Tu planilla actual es: " + planilla);
                 }
@@ -542,7 +547,7 @@ public class Ajedrez {
     // --> MÉTODO DE MOVIMIENTOS DE DAMA
 
     public static void dama() {
-        //Algoritmo de la dama es la combinacion de la torre y el Alfil.//
+        //Algoritmo de la dama, es la combinacion de la torre y el Alfil.//
         char inicial = 'D';
         Scanner dama = new Scanner(System.in);
         do {
